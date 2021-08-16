@@ -1,7 +1,6 @@
 $primary: #0d7e74;
 $secondary: #30d36e;
-$white: #616161;
-$gray: #616161;
+$gray: #4e5069;
 
 body {
   box-sizing: border-box;
@@ -28,6 +27,25 @@ body {
   animation: rainbow 8s ease infinite;
 }
 
+.card {
+  position: absolute;
+  padding: 0px 25px 0px 25px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 65vh;
+  max-height: 100vh;
+  width: 80vw;
+  left: 50%;
+  overflow-y: scroll;
+  box-shadow: -53px 54px 40px 3px rgba(0, 0, 0, 0.31), -60px 39px 59px -15px rgba(0, 0, 0, 0.62);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 10%,
+    rgb(255, 255, 255) 80%,
+    rgb(253, 253, 253)
+  );
+}
+
 .input-form {
   position: relative;
   padding: 15px 0 0;
@@ -40,9 +58,8 @@ body {
   width: 100%;
   border: 0;
   border-bottom: 2px solid $gray;
-  outline: 0;
   font-size: 1.3rem;
-  color: $white;
+  color: $gray;
   padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
@@ -91,25 +108,6 @@ body {
   }
 }
 
-.card {
-  position: absolute;
-  padding: 0px 15px 0px 25px;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  min-height: 75vh;
-  max-height: 100vh;
-  width: 80vw;
-  left: 50%;
-  overflow-y: scroll;
-  box-shadow: -53px 54px 40px 3px rgba(0, 0, 0, 0.31), -60px 39px 59px -15px rgba(0, 0, 0, 0.62);
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 10%,
-    rgb(255, 255, 255) 80%,
-    rgb(253, 253, 253)
-  );
-}
-
 .country-name {
   font-size: 1.3rem;
   color: $gray;
@@ -148,11 +146,12 @@ body {
 }
 
 .country-flag {
+  display: block;
   background: white;
   border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
   color: white;
   box-shadow: 20px 20px rgba(0, 0, 0, 0.15);
-  margin: 10px 0 25px 0;
+  margin: 25px 0 25px 0;
   width: 90%;
 }
 
@@ -167,12 +166,13 @@ body {
 
 @media screen and (min-width: 650px) {
   .card {
+    padding-top: 25px;
     height: 75vh;
     width: 60vw;
     overflow-y: unset;
   }
   .results {
-    margin-top: 25px;
+    margin-top: 45px;
     display: flex;
     justify-content: space-around;
   }
