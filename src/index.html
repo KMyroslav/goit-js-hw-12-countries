@@ -18,20 +18,25 @@
     />
   </head>
   <body>
-    <form class="">
-      <div class="input-form">
-        <label for="searchQuery" class="sr-only">Type country name</label>
-        <input
-          type="text"
-          class="form-control"
-          name="query"
-          id="searchQuery"
-          placeholder="Ukraine"
-          autocomplete="off"
-        />
+    <div class="card">
+      <div class="wrapper">
+        <div class="input-form">
+            <form class="">
+            <input
+              type="text"
+              class="form-control"
+              name="query"
+              id="searchQuery"
+              placeholder="Ukraine"
+              autocomplete="off"
+              required
+            />
+            <label for="searchQuery" class="form-label">Type country name</label>
+          </div>
+        </form>
+        <div class="results"></div>
       </div>
-    </form>
-    <div class="results"></div>
+    </div>
     <script src="./JS/index.js"></script>
   </body>
 </html>

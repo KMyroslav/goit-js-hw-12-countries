@@ -1,7 +1,195 @@
+$primary: #0d7e74;
+$secondary: #30d36e;
+$white: #616161;
+$gray: #616161;
+
 body {
+  box-sizing: border-box;
   width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  background: linear-gradient(
+      124deg,
+      rgba(0, 0, 0, 0),
+      #ff2400,
+      #e81d1d,
+      #e8b71d,
+      #e3e81d,
+      #1de840,
+      #1ddde8,
+      #2b1de8,
+      #dd00f3,
+      #dd00f3
+    ),
+    rgba(0, 0, 0, 0);
+  background-size: 700% 1400%;
+
+  animation: rainbow 8s ease infinite;
 }
 
-// .input-form {
+.input-form {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 90%;
+}
 
-// }
+.form-control {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: $white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form-label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: $gray;
+}
+
+.form-control:focus {
+  ~ .form-label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $primary;
+    font-weight: 700;
+  }
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, $primary, $secondary);
+  border-image-slice: 1;
+}
+
+.form-control {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}
+
+.card {
+  position: absolute;
+  padding: 0px 15px 0px 25px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 75vh;
+  max-height: 100vh;
+  width: 80vw;
+  left: 50%;
+  overflow-y: scroll;
+  box-shadow: -53px 54px 40px 3px rgba(0, 0, 0, 0.31), -60px 39px 59px -15px rgba(0, 0, 0, 0.62);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 10%,
+    rgb(255, 255, 255) 80%,
+    rgb(253, 253, 253)
+  );
+}
+
+.country-name {
+  font-size: 1.3rem;
+  color: $gray;
+  font-weight: 700;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+.country-capital-wrapper {
+  font-size: 1rem;
+  color: $gray;
+  font-weight: 700;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.country-capital {
+  font-weight: 400;
+}
+
+.country-languages-title {
+  font-size: 1rem;
+  color: $gray;
+  font-weight: 700;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.country-languages {
+  font-size: 1rem;
+  color: $gray;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  list-style: circle;
+}
+
+.country-flag {
+  background: white;
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
+  color: white;
+  box-shadow: 20px 20px rgba(0, 0, 0, 0.15);
+  margin: 10px 0 25px 0;
+  width: 90%;
+}
+
+.countries {
+  font-size: 1rem;
+  color: $gray;
+  font-weight: 400;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  list-style: circle;
+}
+
+@media screen and (min-width: 650px) {
+  .card {
+    height: 75vh;
+    width: 60vw;
+    overflow-y: unset;
+  }
+  .results {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .country-flag {
+    width: 40%;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
+}
