@@ -87,7 +87,7 @@ body {
 .form-control:focus {
   ~ .form-label {
     position: absolute;
-    top: 0;
+    top: -7px;
     display: block;
     transition: 0.2s;
     font-size: 1rem;
