@@ -4,7 +4,7 @@ import fetchCountries from './fetchCountries';
 import coupleResultsTpl from '../templates/coupleResults.hbs';
 import singleResultTpl from '../templates/singleResult.hbs';
 const debounce = require('lodash.debounce');
-const { alert, notice, info, success, error } = require('@pnotify/core');
+const { error } = require('@pnotify/core');
 
 const resultsDiv = document.querySelector('.results');
 const searchQuery = document.querySelector('#searchQuery');
@@ -13,9 +13,13 @@ searchQuery.addEventListener('input', debounce(onFormInput, 500));
 
 function onFormInput(e) {
   e.preventDefault();
+  const queryText = searchQuery.value.trimStart();
+  if (searchQuery.value) {
+    searchQuery.value = capitilizer(queryText);
+  }
   resultsDiv.innerHTML = '';
-  if (searchQuery.value && !searchQuery.value.includes(' ', 0)) {
-    fetchCountries(searchQuery.value).then(countries => {
+  if (queryText) {
+    fetchCountries(queryText).then(countries => {
       if (countries.length > 1 && countries.length <= 10) {
         resultsDiv.innerHTML = coupleResultsTpl(countries);
         return;
@@ -28,5 +32,14 @@ function onFormInput(e) {
       }
       resultsDiv.innerHTML = singleResultTpl(countries[0]);
     });
+  }
+}
+
+function capitilizer(searchQuery) {
+  if (searchQuery) {
+    return searchQuery
+      .split(' ')
+      .map(ch => ch.replace(ch.charAt(0), ch.charAt(0).toUpperCase()))
+      .join(' ');
   }
 }
