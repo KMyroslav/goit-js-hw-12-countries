@@ -14,7 +14,7 @@ searchQuery.addEventListener('input', debounce(onFormInput, 500));
 function onFormInput(e) {
   e.preventDefault();
   const queryText = searchQuery.value.trimStart();
-  if (searchQuery.value) {
+  if (queryText) {
     searchQuery.value = capitilizer(queryText);
   }
   resultsDiv.innerHTML = '';
