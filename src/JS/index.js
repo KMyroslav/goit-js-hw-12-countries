@@ -19,19 +19,26 @@ function onFormInput(e) {
   }
   resultsDiv.innerHTML = '';
   if (queryText) {
-    fetchCountries(queryText).then(countries => {
-      if (countries.length > 1 && countries.length <= 10) {
-        resultsDiv.innerHTML = coupleResultsTpl(countries);
-        return;
-      } else if (countries.length > 10) {
+    fetchCountries(queryText)
+      .then(countries => {
+        if (countries.length > 1 && countries.length <= 10) {
+          resultsDiv.innerHTML = coupleResultsTpl(countries);
+          return;
+        } else if (countries.length > 10) {
+          error({
+            title: 'Whoops...',
+            text: 'Too many matches found. Please enter a more specific query',
+          });
+          return;
+        }
+        resultsDiv.innerHTML = singleResultTpl(countries[0]);
+      })
+      .catch(e =>
         error({
-          title: 'Whoops...',
-          text: 'Too many matches found. Please enter a more specific query',
-        });
-        return;
-      }
-      resultsDiv.innerHTML = singleResultTpl(countries[0]);
-    });
+          title: 'Sorry!',
+          text: `We didnt find country named "${queryText}"`,
+        }),
+      );
   }
 }
 
